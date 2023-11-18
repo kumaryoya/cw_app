@@ -35,4 +35,4 @@
 
 /node_modules
 
-/db/seeds.rb
+db/seeds.rb
