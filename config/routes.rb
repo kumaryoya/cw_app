@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root "tops#index"
+  root "user_sessions#new"
+  post "/", to: "user_sessions#create"
+  delete "logout", to: "user_sessions#destroy"
 end
