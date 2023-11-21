@@ -21,4 +21,16 @@ class RoomsController < ApplicationController
     end
     @rooms = current_user.rooms.all
   end
+
+  def show
+    @room = Room.find(params[:id])
+    url = URI("https://api.chatwork.com/v2/rooms/#{@room.cw_room_id}/members")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(url)
+    request["accept"] = 'application/json'
+    request["x-chatworktoken"] = current_user.user_token
+    response = http.request(request)
+    @members = JSON.parse(response.body)
+  end
 end
