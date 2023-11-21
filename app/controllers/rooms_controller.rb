@@ -1,12 +1,8 @@
-class MessagesController < ApplicationController
+class RoomsController < ApplicationController
   require 'uri'
   require 'net/http'
 
   def index
-    @rooms = current_user.rooms.all
-  end
-
-  def api
     current_user.rooms.destroy_all
     url = URI("https://api.chatwork.com/v2/rooms")
     http = Net::HTTP.new(url.host, url.port)
@@ -23,6 +19,6 @@ class MessagesController < ApplicationController
         cw_room_id: room_data["room_id"]
       )
     end
-    redirect_to messages_path
+    @rooms = current_user.rooms.all
   end
 end
