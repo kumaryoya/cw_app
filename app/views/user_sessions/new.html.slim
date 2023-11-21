@@ -1,0 +1,12 @@
+.flex.justify-center.text-center.main_image
+  div
+    h1.text-4xl.py-20 = t('.title')
+    = form_with model: @user, local: true do |f|
+      div.mb-10.text-2xl
+        = f.label :email, User.human_attribute_name(:email)
+        = f.email_field :email, class: 'input input-bordered input-primary w-full'
+      div.mb-10.text-2xl
+        = f.label :password, User.human_attribute_name(:password)
+        = f.password_field :password, class: 'input input-bordered input-primary w-full'
+      div.actions.mb-20
+        = f.submit t('defaults.login'), class: 'btn btn-primary text-white'

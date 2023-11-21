@@ -5,7 +5,7 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_back_or_to messages_path
+      redirect_back_or_to rooms_path
     else
       render :new
     end
