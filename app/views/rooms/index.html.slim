@@ -1,0 +1,8 @@
+.container.mx-auto
+  .flex.flex-wrap.justify-center.pb-20
+    - if @rooms.present?
+      - @rooms.each do |room|
+        | #{room.cw_room_name}
+        br
+    - else
+      p.text-4xl.pt-20 = t('.no_result')
